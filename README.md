@@ -1,4 +1,4 @@
-# Histopathological AIH prediction with CatBoost
+# Histopathological AIH prediction with CatBoost model
 
 [![Tests](https://img.shields.io/badge/tests-passing-brightgreen)](#reproducibility-checks)
 [![Python](https://img.shields.io/badge/python-3.8%2B-blue)](#five-minute-quickstart)
@@ -250,7 +250,7 @@ code. It is not a medical device and is not intended for clinical decision-makin
 
 ---
 
-## Reviewer checklist
+## Checklist
 
 - [ ] Clone the repository into a clean directory.
 - [ ] Run `./quickstart/run_demo.sh`; confirm a three-row AUC table is printed in under 5 minutes.
@@ -261,10 +261,3 @@ code. It is not a medical device and is not intended for clinical decision-makin
 - [ ] Compare only the **synthetic demo** output with the paper's reported results as a software check; the demo is not a validation cohort.
 
 ---
-
-## Contact
-
-Corresponding author: `[name, affiliation, email]`.
-For data-access requests, contact the data access committee at `[email]`.
-Please open a GitHub issue for code problems; do not include patient information in
-issues or pull requests.
