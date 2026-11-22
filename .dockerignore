@@ -1,0 +1,10 @@
+.git
+.gitignore
+__pycache__
+*.pyc
+.DS_Store
+data/derived
+results/figures
+zenodo/*.zip
+zenodo/*.tar.gz
+model/demo_retrained.cbm

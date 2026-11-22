@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Five-minute demo and release checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run Python tests
+        run: python3 -m unittest discover -s tests -v
+
+      - name: Run the dependency-free Table 3 demo
+        run: ./quickstart/run_demo.sh
+
+      - name: Repository hygiene and DOI consistency
+        run: python3 scripts/check_repo_hygiene.py
+
+      - name: Upload Table 3 and predictions
+        uses: actions/upload-artifact@v4
+        with:
+          name: table3-demo
+          path: |
+            results/Table3_demo.csv
+            results/Table3_demo.md
+            results/predictions_demo.csv
+            results/roc_points_demo.csv
+          if-no-files-found: error
+          retention-days: 30

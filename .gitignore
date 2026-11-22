@@ -1,0 +1,40 @@
+# Generated analysis outputs (never committed; scripts create them at run time)
+results/
+
+# Private manuscript inserts and article-level results (kept outside this repo)
+manuscript/
+RELEASE_NOTES.md
+ACCEPTANCE_TEST.md
+
+# Derived feature tables
+data/derived/
+
+# Model retrained on the synthetic demo (the locked model is tracked)
+model/demo_retrained.cbm
+model/catboost_model.json
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# R
+.Rhistory
+.RData
+.Rproj.user
+renv/library/
+catboost_info/
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local secrets and archive build artifacts
+.env
+*.token
+zenodo/*.zip
+zenodo/*.tar.gz

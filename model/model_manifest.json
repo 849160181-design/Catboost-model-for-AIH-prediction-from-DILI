@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0",
+  "artifact": "catboost_model.cbm",
+  "artifact_sha256": "3fd1c8e9d396b44b0873c72b94aaee202849a5908e4fe1c42415b95f5b8f6e9a",
+  "artifact_bytes": 14920,
+  "model_type": "CatBoost binary classifier (CatBoost 1.2.5, R interface)",
+  "created_utc": "2026-11-22",
+  "model_version": "1.0.0",
+  "features": [
+    {
+      "name": "PAS_Macrophages",
+      "model_name": "PAS_.Macrophages",
+      "role": "categorical",
+      "levels": [
+        0,
+        1,
+        2
+      ],
+      "labels": [
+        "absent",
+        "scattered",
+        "clustered"
+      ]
+    },
+    {
+      "name": "MUM1",
+      "model_name": "MUM1",
+      "role": "continuous",
+      "unit": "MUM1-positive cells per portal tract"
+    }
+  ],
+  "output": {
+    "name": "predicted_probability",
+    "meaning": "P(Group = 1), where 1 = case and 0 = control",
+    "range": [
+      0.0,
+      1.0
+    ]
+  },
+  "training": {
+    "cohort": "study development cohort (not redistributed)",
+    "outcome_coding": "1 = case, 0 = control",
+    "trees_in_artifact": 6,
+    "learning_rate": 0.05,
+    "depth": 6,
+    "loss_function": "Logloss",
+    "eval_metric": "AUC",
+    "l2_leaf_reg": 3.0,
+    "random_strength": 1.0,
+    "random_seed": 42,
+    "early_stopping_rounds": 50,
+    "class_weights": "none",
+    "categorical_encoding": "CatBoost internal (CTR / one-hot)",
+    "iterations_requested": 500,
+    "iterations_run": 56,
+    "best_iteration_zero_based": 5,
+    "use_best_model": true,
+    "selection_pool": "internal_test",
+    "selection_metric": "AUC",
+    "selection_note": "The original training call passed test_pool = internal test with use_best_model=TRUE. The run early-stopped after 56 iterations; the best internal-test AUC occurred at iteration 5, and the saved artifact is that 6-tree prefix. Internal-test performance is therefore selection-optimistic; external-test performance is the primary held-out estimate."
+  },
+  "categorical_hash_mapping": {
+    "note": "Raw 64-bit hash values used by the exported pure-Python scorer; they reproduce CatBoost's CTR lookups for the three observed levels.",
+    "0": 18446744072271266578,
+    "1": 1121341681,
+    "2": 18446744072424761207
+  },
+  "exports": {
+    "pure_python": {
+      "path": "model/catboost_model_pure.py",
+      "sha256": "31929854995273f6931d64b1413141d27f5fe538d0d6dcb87f1ac587195b1679"
+    }
+  },
+  "environment": {
+    "r": "4.4.0",
+    "catboost": "1.2.5",
+    "pROC": "1.19.0.1",
+    "os": "macOS 15.1 (x86_64)"
+  },
+  "parity_test": "tests/test_model_parity.py (48 grid points, tolerance 1e-6)"
+}
