@@ -9,7 +9,7 @@
 This repository accompanies the manuscript's final **CatBoost** model for predicting
 AIH from two histopathological features:
 
-- `MUM1` — average MUM1-positive cells per portal tract (continuous);
+- `MUM1` — average MUM1-positive cells per portal area (continuous);
 - `PAS_Macrophages` — PAS-positive macrophages (categorical: absent / scattered / clustered).
 
 It contains the locked model, the analysis code, and a fully synthetic demonstrator
@@ -18,7 +18,7 @@ external-validation data, and it does not contain article-level result tables,
 manuscript text, pathology images, or medical records.** See
 [`DATA_AVAILABILITY.md`](DATA_AVAILABILITY.md) for the data policy.
 
-> **Reviewers:** the five-minute acceptance test is
+> **The five-minute acceptance test is
 > [`./quickstart/run_demo.sh`](quickstart/run_demo.sh). It needs only Python 3.8+ and
 > prints a Table 3-style AUC table in about one second. You do not need R, CatBoost, or
 > any third-party Python package.
