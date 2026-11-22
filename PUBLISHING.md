@@ -24,16 +24,16 @@ fails, so a forbidden study file cannot be pushed or archived by accident.
    `849160181-design/Catboost-model-for-AIH-prediction-from-DILI`
    (or create a new empty repository with that name). Do **not** initialise it with a
    README or `.gitignore`.
-2. Unzip `aih-catboost-github.zip` (provided next to the repository folder).
+2. Unzip `Catboost-model-for-AIH-prediction-from-DILI-clean.zip` (provided next to the repository folder).
 3. On the new repository page, choose **uploading an existing file**.
-4. Drag the **contents** of the unzipped `aih-catboost/` folder into the upload area
+4. Drag the **contents** of the unzipped `Catboost-model-for-AIH-prediction-from-DILI/` folder into the upload area
    (including hidden files such as `.github`, `.gitignore`, `.gitattributes`, and
    `.dockerignore`; on macOS press `Cmd+Shift+.` to show hidden files).
 5. Commit with the message `Release v1.0.0`.
 6. Open **Settings → Actions → General** and allow GitHub Actions.
 7. Open the **Actions** tab and confirm the `CI` workflow passes.
 8. Create a release: **Releases → Draft a new release → tag `v1.0.0`**, title
-   `v1.0.0`, and attach `aih-catboost-v1.0.0.zip` (the Zenodo archive).
+   `v1.0.0`, and attach `Catboost-model-for-AIH-prediction-from-DILI-v1.0.0.zip`.
 9. The repository URL is already set to
    `https://github.com/849160181-design/Catboost-model-for-AIH-prediction-from-DILI`.
    If you rename or fork the repository, update it in `README.md`, `CITATION.cff`,
@@ -79,12 +79,12 @@ git push origin v1.0.0
 
 ## Option C — Clone from the bundle
 
-A `aih-catboost.bundle` file is provided next to the repository folder. It contains the
-full history and tags:
+A `Catboost-model-for-AIH-prediction-from-DILI-clean.bundle` file is provided next to the
+repository folder. It contains the clean history and tag:
 
 ```bash
-git clone aih-catboost.bundle aih-catboost
-cd aih-catboost
+git clone Catboost-model-for-AIH-prediction-from-DILI-clean.bundle Catboost-model-for-AIH-prediction-from-DILI
+cd Catboost-model-for-AIH-prediction-from-DILI
 git remote set-url origin https://github.com/849160181-design/Catboost-model-for-AIH-prediction-from-DILI.git
 git push -u origin main --tags
 ```
