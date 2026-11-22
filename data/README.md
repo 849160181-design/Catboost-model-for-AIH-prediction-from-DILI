@@ -21,7 +21,7 @@ One row per synthetic participant, 180 rows:
 |---|---|---|
 | `sample_id` | string | `SYN-T-###` (training), `SYN-V-###` (internal test), `SYN-E-###` (external test) |
 | `PAS_Macrophages` | integer | `0` absent, `1` scattered, `2` clustered |
-| `MUM1` | float | positive cells per portal tract, clipped to 1–700 |
+| `MUM1` | float | positive cells per portal area, clipped to 1–700 |
 | `Group` | integer | `1` case, `0` control |
 | `split` | string | `train`, `internal_test`, `external_test` |
 
