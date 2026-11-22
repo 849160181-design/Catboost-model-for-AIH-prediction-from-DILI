@@ -123,8 +123,8 @@ hyperparameters: [`model/model_manifest.json`](model/model_manifest.json).
 library(catboost)
 model <- catboost.load_model("model/catboost_model.cbm")
 newdata <- data.frame(
-  PAS_.Macrophages = factor(c(0, 2), levels = c(0, 1, 2)),
-  MUM1 = c(15, 120)
+  PAS_.Macrophages = factor(1, levels = c(0, 1, 2)),  # 0 absent, 1 scattered, 2 clustered
+  MUM1 = 120
 )
 catboost.predict(
   model,
