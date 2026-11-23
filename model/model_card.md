@@ -127,7 +127,7 @@ The R path is wrapped by `05_model/05_apply_final_model.R` and `Rscript run_all.
 - The development cohort is modest; estimates have wide confidence intervals.
 - Only two histopathological features are used; no other variables, laboratory values,
   or imaging features are included.
-- The model assumes the same staining, scanning, and quantification protocol. Use with
+- The model assumes the same staining, scanning, and measurement protocol. Use with
   other scanners or protocols requires local validation.
 - The 0.50 threshold is a reporting convention, not a prospectively validated operating
   point. Thresholds should be chosen and validated locally.

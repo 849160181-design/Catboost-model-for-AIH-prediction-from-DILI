@@ -43,7 +43,6 @@ uses `PAS_Macrophages`. The adapter is in `R/utils.R`. To run the whole pipeline
 | Path | Purpose |
 |---|---|
 | `01_qc/` | Schema, missingness, duplicate-ID and split-integrity checks |
-| `02_quantification.ijm` | Documented ImageJ macro for PAS/MUM1 quantification (template only; images not shared) |
 | `03_features/` | Build the model-ready feature table |
 | `04_regression/` | Univariable and multivariable logistic-regression benchmarks |
 | `05_model/` | Train CatBoost on the synthetic split; apply the frozen model |
@@ -96,7 +95,7 @@ bootstrap CIs use seed `20240501` with 2,000 resamples; the model SHA-256 is pin
 
 ## License
 
-Code (R, Python, ImageJ macro, shell) is released under the MIT licence (`LICENSE`);
+Code (R, Python, shell) is released under the MIT licence (`LICENSE`);
 data, documentation and figures under CC BY 4.0 (`LICENSE-DATA`). The model is released
 for research use on the same terms as the code. It is not a medical device and is not
 intended for diagnosis.

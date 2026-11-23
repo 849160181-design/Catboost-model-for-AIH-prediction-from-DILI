@@ -1,10 +1,8 @@
 #!/usr/bin/env Rscript
 # 03_features.R -- assemble the analysis-ready feature table.
 #
-# In a full pipeline, this script joins the image-quantification output from
-# 02_quantification.ijm to the outcome table.  The public repository
-# starts from the synthetic analysis-ready table; this script validates it,
-# writes one file per split, and produces descriptive feature summaries.
+# This script validates the synthetic analysis-ready table, writes one file per
+# split, and produces descriptive feature summaries.
 
 source(file.path(
   if (exists("REPO_ROOT", envir = .GlobalEnv, inherits = FALSE)) REPO_ROOT else ".",

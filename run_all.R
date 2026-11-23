@@ -1,5 +1,5 @@
 #!/usr/bin/env Rscript
-# run_all.R -- run the public 01-08 pipeline in order.
+# run_all.R -- run the public analysis pipeline in order.
 #
 # Requirements: R >= 4.4, catboost (>= 1.2.5), pROC.
 # The five-minute dependency-free path is ./quickstart/run_demo.sh and does not need R.
@@ -8,9 +8,6 @@
 #   Rscript run_all.R
 #   Rscript run_all.R --skip-figures
 #
-# 02_quantification.ijm is intentionally not executed: the pathology images are
-# not distributed.  The synthetic cohort starts at the analysis-ready stage.
-
 args <- commandArgs(trailingOnly = TRUE)
 skip_figures <- "--skip-figures" %in% args
 
@@ -43,10 +40,6 @@ if (nzchar(Sys.which("python3"))) {
 
 steps <- c(steps, "05_model/05_apply_final_model.R", "06_thresholds/06_thresholds.R", "07_subgroups/07_subgroups.R")
 if (!skip_figures) steps <- c(steps, "08_figures/08_figures.R")
-
-message("\n=== 02_quantification.ijm ===")
-message("Skipped: pathology images are not distributed (identifiable patient material).")
-message("The macro is a documented template; run it only on authorised images.")
 
 for (step in steps) {
   message("\n================================================================")

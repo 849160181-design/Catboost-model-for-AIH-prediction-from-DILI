@@ -1,9 +1,7 @@
 #!/usr/bin/env Rscript
 # 01_qc.R -- quality control of the analysis-ready feature table.
 #
-# Image-level QC is performed before quantification and is not
-# reproducible from the public repository because the images are not shared.
-# This script performs the QC that *can* be reproduced: schema, missingness,
+# This script performs QC of the analysis-ready table: schema, missingness,
 # ranges, duplicates, split integrity, and class balance.
 
 suppressPackageStartupMessages({
@@ -111,9 +109,8 @@ summary_lines <- c(
   paste("duplicate IDs:", anyDuplicated(df$sample_id)),
   paste("split overlap:", sum(id_split > 1L)),
   "",
-  "Note: image-level QC (focus, staining batch, ROI selection) is documented in",
-  "02_quantification.ijm and the Methods; pathology images are not shared because",
-  "they contain identifiable patient information."
+  "Note: the synthetic cohort starts at the analysis-ready stage; image-level QC",
+  "is not applicable to this repository."
 )
 writeLines(summary_lines, file.path(RESULTS_DIR, "qc_summary.txt"))
 
