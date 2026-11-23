@@ -1,9 +1,9 @@
 #!/usr/bin/env Rscript
-# 08_figures.R -- manuscript-style figures from the locked model.
+# 08_figures.R -- analysis figures from the locked model.
 #
 # All figures are generated from the synthetic demonstrator cohort.  They are
 # deliberately labelled "synthetic demo" so they cannot be mistaken for the
-# study figures.  Outputs are written to results/figures/ and are git-ignored.
+# analysis figures.  Outputs are written to results/figures/ and are git-ignored.
 
 suppressPackageStartupMessages({
   library(catboost)

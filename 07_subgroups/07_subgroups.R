@@ -66,7 +66,7 @@ for (s in SPLITS) {
   }
 }
 subgroups <- do.call(rbind, rows)
-write_csv(subgroups, "TableS4_subgroups.csv")
+write_csv(subgroups, "subgroups.csv")
 
 cat("Exploratory subgroup performance (synthetic demo):\n")
 print(subgroups[, c("split", "subgroup_type", "subgroup", "n", "events", "auc", "ci_lower", "ci_upper")],

@@ -1,9 +1,9 @@
 #!/usr/bin/env Rscript
-# 05_apply_final_model.R -- apply the locked model and reproduce Table 3.
+# 05_apply_final_model.R -- apply the locked model and write the performance table.
 #
 # This is the R reference implementation for the locked .cbm model.  It is
 # expected to agree with quickstart/run_demo.py; the Python path is the
-# dependency-free reviewer entry point.
+# dependency-free entry point.
 
 suppressPackageStartupMessages({
   library(catboost)
@@ -41,7 +41,7 @@ write_csv(predicted_df, "predictions_locked_model.csv")
 # Training-derived Youden threshold, applied unchanged to all splits.
 youden <- youden_threshold(splits$train$Group, predicted[[1]]$predicted_probability)
 
-table3 <- do.call(rbind, lapply(seq_along(SPLITS), function(i) {
+performance <- do.call(rbind, lapply(seq_along(SPLITS), function(i) {
   s <- SPLITS[[i]]
   y <- predicted[[i]]$Group
   p <- predicted[[i]]$predicted_probability
@@ -66,7 +66,7 @@ table3 <- do.call(rbind, lapply(seq_along(SPLITS), function(i) {
     stringsAsFactors = FALSE
   )
 }))
-write_csv(table3, "Table3_locked_model_R.csv")
+write_csv(performance, "performance_locked_model_R.csv")
 
 threshold_table <- do.call(rbind, lapply(seq_along(SPLITS), function(i) {
   s <- SPLITS[[i]]
@@ -92,7 +92,7 @@ threshold_table <- do.call(rbind, lapply(seq_along(SPLITS), function(i) {
     )
   }
 }))
-write_csv(threshold_table, "TableS3_thresholds_R.csv")
+write_csv(threshold_table, "thresholds_R.csv")
 
 # Compare with the Python demo if it has already been run.
 demo_path <- file.path(RESULTS_DIR, "predictions_demo.csv")
@@ -114,6 +114,6 @@ if (file.exists(demo_path)) {
               parity$max_abs_difference, parity$n_compared))
 }
 
-cat("\nTable 3 (locked model, R/CatBoost; synthetic demo):\n")
-print(table3, row.names = FALSE)
+cat("\nPerformance table (locked model, R/CatBoost; synthetic demo):\n")
+print(performance, row.names = FALSE)
 cat(sprintf("\nTraining-derived Youden threshold: %.4f\n", youden))

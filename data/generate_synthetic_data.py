@@ -3,10 +3,10 @@
 
 Why this file exists
 --------------------
-The study cohort cannot be redistributed (see ../DATA_AVAILABILITY.md).
-Reviewers still need a dataset that exercises the *entire* scoring and evaluation
-pipeline.  This script therefore generates a small, fully synthetic cohort whose
-columns match ``data_dictionary.csv`` exactly.
+Patient-level data are not redistributed.  Users still need a dataset that
+exercises the *entire* scoring and evaluation pipeline.  This script therefore
+generates a small, fully synthetic cohort whose columns match
+``data_dictionary.csv`` exactly.
 
 Generative model (transparent by design)
 ----------------------------------------
@@ -26,10 +26,10 @@ For every synthetic participant:
 The parameters and random seeds below were chosen **once** so that the locked
 model (``model/catboost_model.cbm``) returns a realistic AUC range.  This makes
 the fixture useful as a software regression test.  It is *not* a validation
-cohort, it contains no study results, and it must never be used to estimate
-clinical performance, prevalence, or subgroup effects.
+cohort, it contains no patient data, and it must never be used to estimate
+performance, prevalence, or subgroup effects.
 
-No record-level study data, pathology image, or medical record is used here.
+No patient-level data, pathology image, or medical record is used here.
 All identifiers are synthetic (``SYN-T-001``, ``SYN-V-001``, ``SYN-E-001``).
 
 Usage

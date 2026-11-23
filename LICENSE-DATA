@@ -1,9 +1,9 @@
 Creative Commons Attribution 4.0 International (CC BY 4.0)
 
-Copyright (c) 2026 [Authors]
+Copyright (c) 2026 The CatBoost AIH Model Authors
 
-This license applies to the synthetic data, documentation, aggregate result
-tables, and figures in this repository. The source code is licensed under the
+This license applies to the synthetic data, documentation, and figures in this
+repository. The source code is licensed under the
 MIT License (see LICENSE).
 
 You are free to:
@@ -28,7 +28,7 @@ Human-readable summary: https://creativecommons.org/licenses/by/4.0/
 
 The model artifact (catboost_model.cbm) is released for research
 reproducibility under the MIT License. It is not a medical device and is not
-intended for clinical decision-making.
+intended for diagnosis.
 
 No patient-level data, pathology images, or medical records are included in
 this repository or covered by this license.

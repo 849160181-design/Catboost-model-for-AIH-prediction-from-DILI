@@ -1,7 +1,7 @@
 #!/usr/bin/env Rscript
 # 01_qc.R -- quality control of the analysis-ready feature table.
 #
-# The study's image-level QC is performed before quantification and is not
+# Image-level QC is performed before quantification and is not
 # reproducible from the public repository because the images are not shared.
 # This script performs the QC that *can* be reproduced: schema, missingness,
 # ranges, duplicates, split integrity, and class balance.
@@ -58,7 +58,7 @@ id_split <- table(df$sample_id)
 add_check("no_split_overlap", "all", sum(id_split > 1L), sum(id_split > 1L) == 0)
 
 # ---------------------------------------------------------------------------
-# 2. Baseline characteristics (Table 1)
+# 2. Baseline characteristics
 # ---------------------------------------------------------------------------
 baseline <- do.call(rbind, lapply(SPLITS, function(s) {
   part <- splits[[s]]
@@ -98,8 +98,8 @@ by_group[, 3:5] <- round(by_group[, 3:5], 2)
 # 3. Write outputs
 # ---------------------------------------------------------------------------
 write_csv(report, "qc_report.csv")
-write_csv(baseline, "Table1_baseline_by_split.csv")
-write_csv(by_group, "Table1_baseline_by_group.csv")
+write_csv(baseline, "baseline_by_split.csv")
+write_csv(by_group, "baseline_by_group.csv")
 
 summary_lines <- c(
   "QC summary -- synthetic demonstrator cohort",

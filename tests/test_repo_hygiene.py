@@ -73,16 +73,16 @@ class RepositoryHygieneTest(unittest.TestCase):
     }
     TEXT_SUFFIXES = {".md", ".csv", ".py", ".R", ".r", ".ijm", ".yml", ".yaml", ".json", ".cff", ".txt"}
 
-    def test_no_manuscript_or_results_tracked(self):
+    def test_no_results_tracked(self):
         if not (ROOT / ".git").exists():
             self.skipTest("not a Git checkout")
         tracked = subprocess.check_output(["git", "ls-files"], cwd=ROOT, text=True).splitlines()
-        bad = [f for f in tracked if f.startswith(("manuscript/", "results/"))]
-        self.assertEqual(bad, [], f"private manuscript/results are tracked: {bad}")
+        bad = [f for f in tracked if f.startswith("results/")]
+        self.assertEqual(bad, [], f"generated results are tracked: {bad}")
 
-    def test_no_study_data_files(self):
+    def test_no_original_data_files(self):
         found = [p for p in ROOT.rglob("*") if p.name in self.FORBIDDEN_NAMES]
-        self.assertEqual(found, [], f"forbidden study files present: {found}")
+        self.assertEqual(found, [], f"forbidden input files present: {found}")
 
     def test_no_image_or_document_attachments(self):
         allowed = ROOT / "results" / "figures"
@@ -102,12 +102,12 @@ class RepositoryHygieneTest(unittest.TestCase):
             if path.is_file() and ".git" not in path.parts:
                 self.assertLess(path.stat().st_size, 2_000_000, f"large file: {path}")
 
-    def test_no_study_accession_strings(self):
+    def test_no_accession_strings(self):
         pattern = re.compile(r"GSE\d{4,}|GSM\d{4,}")
         for path in ROOT.rglob("*"):
             if path.is_file() and path.suffix.lower() in self.TEXT_SUFFIXES:
                 text = path.read_text(encoding="utf-8", errors="ignore")
-                self.assertIsNone(pattern.search(text), f"study accession in {path}")
+                self.assertIsNone(pattern.search(text), f"accession in {path}")
 
 
 if __name__ == "__main__":

@@ -2,7 +2,7 @@
 # run_all.R -- run the public 01-08 pipeline in order.
 #
 # Requirements: R >= 4.4, catboost (>= 1.2.5), pROC.
-# The five-minute reviewer path is ./quickstart/run_demo.sh and does not need R.
+# The five-minute dependency-free path is ./quickstart/run_demo.sh and does not need R.
 #
 # Usage (from the repository root):
 #   Rscript run_all.R
@@ -63,12 +63,12 @@ message("Pipeline complete.")
 message("Key outputs:")
 for (f in c(
   "results/qc_report.csv",
-  "results/Table1_baseline_by_split.csv",
-  "results/Table2_logistic_regression.csv",
-  "results/Table3_locked_model_R.csv",
-  "results/Table3_demo.csv",
-  "results/TableS3_thresholds.csv",
-  "results/TableS4_subgroups.csv",
+  "results/baseline_by_split.csv",
+  "results/logistic_regression.csv",
+  "results/performance_locked_model_R.csv",
+  "results/performance_demo.csv",
+  "results/thresholds.csv",
+  "results/subgroups.csv",
   "results/feature_importance_locked_model.csv",
   "results/model_parity_R_vs_python.csv"
 )) {

@@ -12,6 +12,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DEMO = ROOT / "quickstart" / "run_demo.py"
 
+
 class DemoTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -24,7 +25,7 @@ class DemoTest(unittest.TestCase):
             capture_output=True,
             check=False,
         )
-        cls.table_path = cls.out / "Table3_demo.csv"
+        cls.table_path = cls.out / "performance_demo.csv"
         cls.rows = []
         if cls.table_path.exists():
             with cls.table_path.open(newline="", encoding="utf-8") as handle:
@@ -57,10 +58,10 @@ class DemoTest(unittest.TestCase):
         self.assertEqual(len({r["sample_id"] for r in predictions}), 180)
 
     def test_markdown_warns_that_data_are_synthetic(self):
-        text = (self.out / "Table3_demo.md").read_text(encoding="utf-8")
+        text = (self.out / "performance_demo.md").read_text(encoding="utf-8")
         self.assertIn("SYNTHETIC DEMO", text)
-        self.assertIn("NOT STUDY RESULTS", text)
-        self.assertIn("NOT CLINICAL PERFORMANCE", text)
+        self.assertIn("NOT PATIENT DATA", text)
+        self.assertIn("NOT FOR DIAGNOSIS", text)
 
 
 if __name__ == "__main__":

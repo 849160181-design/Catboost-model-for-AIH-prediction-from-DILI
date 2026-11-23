@@ -1,8 +1,7 @@
-# Histopathological AIH prediction with CatBoost
+# CatBoost model for AIH prediction
 
 A frozen CatBoost model that estimates the probability of autoimmune hepatitis (AIH)
-from two histopathological features, together with the analysis code used to build,
-validate and apply it.
+from two histopathological features, together with the code needed to apply it.
 
 - `MUM1` — average MUM1-positive cells per portal area (continuous)
 - `PAS_Macrophages` — PAS-positive macrophages (0 absent, 1 scattered, 2 clustered)
@@ -29,14 +28,14 @@ library(catboost)
 model <- catboost.load_model("model/catboost_model.cbm")
 
 newdata <- data.frame(
-  PAS_.Macrophages = factor("1", levels = c("0", "1", "2")),    # 0 absent, 1 scattered, 2 clustered
+  PAS_.Macrophages = factor("1", levels = c("0", "1", "2")),  # 0 absent, 1 scattered, 2 clustered
   MUM1 = 120
 )
 catboost.predict(model, catboost.load_pool(newdata), prediction_type = "Probability")
 ```
 
-The model's internal categorical feature name is `PAS_.Macrophages`; the public schema uses
-`PAS_Macrophages`. The adapter is in `R/utils.R`. To run the whole pipeline, use
+The model's internal categorical feature name is `PAS_.Macrophages`; the public schema
+uses `PAS_Macrophages`. The adapter is in `R/utils.R`. To run the whole pipeline, use
 `Rscript run_all.R` (R ≥ 4.4, CatBoost ≥ 1.2.5, pROC).
 
 ## Repository map
@@ -55,7 +54,7 @@ The model's internal categorical feature name is `PAS_.Macrophages`; the public 
 | `data/` | Synthetic cohort (180 rows), generator and data note |
 | `data_dictionary.csv` | Field definitions |
 | `quickstart/` | Dependency-free demo and model-parity check |
-| `tests/` | Schema, policy, parity and end-to-end tests |
+| `tests/` | Schema, parity and end-to-end tests |
 | `run_all.R` | Run 01, 03–08 in order |
 
 ## Model
@@ -71,29 +70,21 @@ The model's internal categorical feature name is `PAS_.Macrophages`; the public 
 
 Intended use, limitations and selection metadata: `model/model_card.md`.
 
-## Data availability
+## Data
 
-The repository contains **no patient-level data, pathology images, whole-slide images
-or medical records**, and none of the datasets used to develop or validate the model.
-Histopathology images and linked clinical records are identifiable, and the ethics
-approvals and informed consent under which they were collected do not permit open
-deposition.
+The repository contains only the synthetic example cohort in `data/`. It contains **no
+patient-level data, pathology images, whole-slide images or medical records**, and none
+of the original training, internal-validation or external-validation datasets.
 
-What is provided instead:
-
-1. a synthetic cohort of 180 rows matching `data_dictionary.csv`, generated from a
-   transparent latent-class model with fixed seeds;
-2. the frozen model and a dependency-free scorer;
-3. the analysis code, which runs end to end on the synthetic cohort.
-
-The synthetic cohort is not a de-identified copy of any study data and must not be used
-to estimate clinical performance, prevalence or subgroup effects. See
-`DATA_AVAILABILITY.md`.
+The synthetic cohort has 180 rows and matches `data_dictionary.csv`. It was generated
+from a transparent latent-class model with fixed seeds and is calibrated to give a
+realistic AUC for software verification. It is not a copy of patient data and must not
+be used to estimate model performance, prevalence or subgroup effects.
 
 ## Reproducibility checks
 
 ```bash
-python3 -m unittest discover -s tests -v      # all tests
+python3 -m unittest discover -s tests -v      # tests
 python3 tests/test_model_parity.py            # model parity only
 Rscript 05_model/05_apply_final_model.R       # R vs Python predictions (tolerance 1e-6)
 Rscript run_all.R                             # full R pipeline
@@ -107,5 +98,5 @@ bootstrap CIs use seed `20240501` with 2,000 resamples; the model SHA-256 is pin
 
 Code (R, Python, ImageJ macro, shell) is released under the MIT licence (`LICENSE`);
 data, documentation and figures under CC BY 4.0 (`LICENSE-DATA`). The model is released
-for research reproducibility on the same terms as the code. It is not a medical device
-and is not intended for clinical decision-making.
+for research use on the same terms as the code. It is not a medical device and is not
+intended for diagnosis.

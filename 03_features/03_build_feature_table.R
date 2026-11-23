@@ -1,8 +1,8 @@
 #!/usr/bin/env Rscript
 # 03_features.R -- assemble the analysis-ready feature table.
 #
-# In the full study, this script joins the image-quantification output from
-# 02_quantification.ijm to the clinical/outcome table.  The public repository
+# In a full pipeline, this script joins the image-quantification output from
+# 02_quantification.ijm to the outcome table.  The public repository
 # starts from the synthetic analysis-ready table; this script validates it,
 # writes one file per split, and produces descriptive feature summaries.
 

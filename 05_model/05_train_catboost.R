@@ -2,7 +2,7 @@
 # 05_train_catboost.R -- retrain the CatBoost pipeline on the synthetic cohort.
 #
 # This is a *demonstration* of the training procedure, not the final model.
-# The locked model supplied with the manuscript is model/catboost_model.cbm and
+# The locked model supplied as model/catboost_model.cbm is
 # is applied by 05_apply_final_model.R.  The retrained artifact is written to
 # model/demo_retrained.cbm and is intentionally git-ignored.
 

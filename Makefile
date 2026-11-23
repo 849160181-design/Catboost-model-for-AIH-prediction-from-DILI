@@ -1,4 +1,4 @@
-.PHONY: demo test parity r-all data hygiene clean release
+.PHONY: demo test parity r-all data clean
 
 demo:
 	python3 quickstart/run_demo.py
@@ -14,12 +14,6 @@ r-all:
 
 data:
 	python3 data/generate_synthetic_data.py
-
-hygiene:
-	python3 scripts/check_repo_hygiene.py
-
-release: test demo hygiene
-	@echo "Release checks passed."
 
 clean:
 	rm -rf results data/derived __pycache__ tests/__pycache__

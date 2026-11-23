@@ -75,9 +75,9 @@ selected <- do.call(rbind, lapply(SPLITS, function(s) {
   }
   do.call(rbind, rows)
 }))
-write_csv(selected, "TableS3_thresholds.csv")
+write_csv(selected, "thresholds.csv")
 
-# A compact recommended-operating-point table for the manuscript.
+# A compact recommended-operating-point table.
 recommended <- selected[selected$threshold_method == "Youden_training", ]
 recommended$note <- "Training-set Youden threshold applied unchanged to held-out data"
 write_csv(recommended, "threshold_recommended.csv")

@@ -4,7 +4,7 @@
 |---|---|
 | `catboost_model.cbm` | Locked CatBoost 1.2.5 model |
 | `catboost_model_pure.py` | Dependency-free Python export, used by the five-minute demo |
-| `model_card.md` | Intended use, inputs, training metadata, limitations, ethics |
+| `model_card.md` | Intended use, inputs, training metadata, and limitations |
 | `model_manifest.json` | SHA-256 hashes, feature mapping, hyperparameters, selection metadata |
 
 ## Important selection metadata
@@ -24,7 +24,7 @@ catboost_model_pure.py   31929854995273f6931d64b1413141d27f5fe538d0d6dcb87f1ac58
 
 ## Why there is a pure-Python export
 
-The reviewer path must work on a machine without R or CatBoost. CatBoost 1.2.5 can
+The dependency-free path must work on a machine without R or CatBoost. CatBoost 1.2.5 can
 export a model to standalone Python. The R exporter leaves the categorical hash table
 empty, so the three hashes for PAS levels 0/1/2 were restored in
 `catboost_model_pure.py`. The restoration is validated against CatBoost on 48 grid
@@ -45,5 +45,5 @@ and the `predict_proba` helper, then run `python3 -m unittest discover -s tests 
 ## Important
 
 The `.cbm` contains learned tree parameters only. It does **not** contain row-level
-patient records, images, or identifiers. The training data are not redistributed; see
-`../DATA_AVAILABILITY.md`.
+patient records, images, or identifiers. Patient-level training data are not
+redistributed.

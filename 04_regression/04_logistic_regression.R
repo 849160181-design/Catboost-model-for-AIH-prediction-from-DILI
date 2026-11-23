@@ -3,7 +3,7 @@
 #
 # These models are reported alongside the CatBoost model.  They are fitted on
 # the synthetic demonstrator data only; the estimates illustrate the pipeline
-# and are not clinical effect estimates.
+# and are not effect estimates for a specific cohort.
 
 source(file.path(
   if (exists("REPO_ROOT", envir = .GlobalEnv, inherits = FALSE)) REPO_ROOT else ".",
@@ -59,8 +59,8 @@ fit_table <- data.frame(
   stringsAsFactors = FALSE
 )
 
-write_csv(coef_table, "Table2_logistic_regression.csv")
-write_csv(fit_table, "Table2_logistic_model_fit.csv")
+write_csv(coef_table, "logistic_regression.csv")
+write_csv(fit_table, "logistic_model_fit.csv")
 
 cat("Logistic regression (synthetic demonstrator data):\n")
 print(coef_table[, c("model", "term", "odds_ratio", "or_lower_95", "or_upper_95", "p_value_formatted")],

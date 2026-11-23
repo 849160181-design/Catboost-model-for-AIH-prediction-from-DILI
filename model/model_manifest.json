@@ -38,7 +38,7 @@
     ]
   },
   "training": {
-    "cohort": "study development cohort (not redistributed)",
+    "cohort": "training cohort (not redistributed)",
     "outcome_coding": "1 = case, 0 = control",
     "trees_in_artifact": 6,
     "learning_rate": 0.05,

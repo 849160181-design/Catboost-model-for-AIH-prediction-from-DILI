@@ -5,9 +5,9 @@
 //
 // IMPORTANT
 // ---------
-// This macro is a *documented template*, not a validated assay.  The study
-// pathology images are not distributed with this repository because they are
-// identifiable patient material.  Before using the macro on a new cohort:
+// This macro is a *documented template*, not a validated assay.  Pathology
+// images are not distributed with this repository.  Before using the macro on a
+// new cohort:
 //   1. calibrate the thresholds on your scanner and staining batch using
 //      control tissue;
 //   2. verify the channel order and pixel size;
